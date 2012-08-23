@@ -1,0 +1,14 @@
+﻿
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the C:\Users\james\Documents\Visual Studio 2012\Projects\SimpleBlog\bin\Debug\InsanelySimpleBlog.PowerShell.dll assembly's progress.
+The file is located at C:\Users\james\Documents\Visual Studio 2012\Projects\SimpleBlog\bin\Debug\InsanelySimpleBlog.PowerShell.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the C:\Users\james\Documents\Visual Studio 2012\Projects\SimpleBlog\bin\Debug\InsanelySimpleBlog.PowerShell.dll assembly's progress.
+The file is located at C:\Users\james\Documents\Visual Studio 2012\Projects\SimpleBlog\bin\Debug\InsanelySimpleBlog.PowerShell.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.

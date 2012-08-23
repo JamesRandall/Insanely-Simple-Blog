@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsanelySimpleBlog", "InsanelySimpleBlog\InsanelySimpleBlog.csproj", "{477DD92C-CCE8-41F6-92F3-1FA8C9AFC9DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsanelySimpleBlog.PowerShell", "InsanelySimpleBlog.PowerShell\InsanelySimpleBlog.PowerShell.csproj", "{6BF37140-7A3D-44AE-A8A5-230491631EFE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F8B8A919-4A13-4953-B115-9ADA024868B4}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		readme.md = readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample Posts", "Sample Posts", "{50DE0620-0685-4252-8771-E837B970119B}"
+	ProjectSection(SolutionItems) = preProject
+		SamplePosts\post1.md = SamplePosts\post1.md
+		SamplePosts\post2.md = SamplePosts\post2.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsanelySimpleBlog.SampleBlogHost", "InsanelySimpleBlog.SampleBlogHost\InsanelySimpleBlog.SampleBlogHost.csproj", "{0FFD05BD-DEB6-4468-B3D9-5B347B47707B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsanelySimpleBlog.Tests.Unit", "InsanelySimpleBlog.Tests.Unit\InsanelySimpleBlog.Tests.Unit.csproj", "{54F24944-6078-4080-87EC-C1E1AA05B1E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D1999706-BE08-4995-B1DD-1CD0992CFE7B}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{477DD92C-CCE8-41F6-92F3-1FA8C9AFC9DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{477DD92C-CCE8-41F6-92F3-1FA8C9AFC9DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{477DD92C-CCE8-41F6-92F3-1FA8C9AFC9DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{477DD92C-CCE8-41F6-92F3-1FA8C9AFC9DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BF37140-7A3D-44AE-A8A5-230491631EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BF37140-7A3D-44AE-A8A5-230491631EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BF37140-7A3D-44AE-A8A5-230491631EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BF37140-7A3D-44AE-A8A5-230491631EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FFD05BD-DEB6-4468-B3D9-5B347B47707B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FFD05BD-DEB6-4468-B3D9-5B347B47707B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FFD05BD-DEB6-4468-B3D9-5B347B47707B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FFD05BD-DEB6-4468-B3D9-5B347B47707B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54F24944-6078-4080-87EC-C1E1AA05B1E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54F24944-6078-4080-87EC-C1E1AA05B1E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54F24944-6078-4080-87EC-C1E1AA05B1E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54F24944-6078-4080-87EC-C1E1AA05B1E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35;packages\Unity.Interception.2.1.505.2\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\TransientFaultHandling.Core.5.0.1118.2\lib\NET35;packages\EnterpriseLibrary.WindowsAzure.TransientFaultHandling.5.0.1118.2\lib\NET4;packages\EnterpriseLibrary.WindowsAzure.TransientFaultHandling.5.0.1118.2\DesignTime
+	EndGlobalSection
+EndGlobal

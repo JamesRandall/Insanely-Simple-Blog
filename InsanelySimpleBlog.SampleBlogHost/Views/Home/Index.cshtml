@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="insanelysimpleblog">
+    
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/insanelySimpleBlog")
+    <script type="text/template" id="tpl-post-item-view">
+        <div class="post">
+            <div class="header">
+                <a href="#/posts/{{PostID}}">{{Subject}}</a>
+                Posted on {{date PostedAt}} by {{AuthorName}}
+            </div>
+            <div class="body">
+                {{{BodyAsHtml}}}
+            </div>
+            <ul class="categories clearfix">
+                {{#each Categories}}<li><a href="#/categories/{{CategoryID}}">{{Name}}</a></li>{{/each}}
+            </ul>
+        </div>
+    </script>
+    <script type="text/tamplate" id="tpl-sidebar-view">
+        <h1>CATEGORIES</h1>
+        <ul>
+            <li><a href="#/posts">All</a></li>
+            {{#each Categories}}<li><a href="#/categories/{{CategoryID}}">{{Name}}</a></li>{{/each}}
+        </ul>
+        <h1>SUBSCRIBE</h1>
+        <ul>
+            <li><a href="{{Rss}}">Rss</a></li>
+            <li><a href="{{Atom}}">Atom</a></li>
+        </ul>
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var apiEndpoints = {
+                getPosts: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new {controller = "Post", action = "GetPosts"})',
+                getPost: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new {controller = "Post", action = "GetPost"})',
+                getCategories: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new {controller = "Category", action = "GetCategories"})',
+                rss: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new { controller = "Post", action="GetPosts" })?pageNumber=0&pageSize=20&formatter=rss',
+                atom: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new { controller = "Post", action="GetPosts" })?pageNumber=0&pageSize=20&formatter=atom'
+            };
+            InsanelySimpleBlog.start(apiEndpoints);
+        });
+    </script>
+}

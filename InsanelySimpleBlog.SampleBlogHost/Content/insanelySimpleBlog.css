@@ -1,0 +1,73 @@
+﻿.insanelysimpleblog {
+    
+}
+
+.insanelysimpleblog .postcontainer {
+    width: 780px;
+    padding-right: 20px;
+}
+
+.insanelysimpleblog .post {
+    margin-bottom: 5em;
+}
+
+.insanelysimpleblog .header {
+    font-style: italic;
+}
+
+.insanelysimpleblog .header a {
+    background-color: #ccc;
+    display: block;
+    text-decoration: none;
+    font-size: 2em;
+    font-style: normal;
+    font-weight: bold;
+} 
+
+.insanelysimpleblog .header a:hover {
+    background-color: #aaa;
+}
+
+.insanelysimpleblog .body {
+    padding: 0em;
+}
+
+.insanelysimpleblog .body h2 {
+    font-size: 1.75em;
+}
+
+.insanelysimpleblog .body h2 {
+    font-size: 1.5em;
+}
+
+.insanelysimpleblog ul.categories {
+    padding-left: 0px;
+    list-style-type: none;
+}
+
+.insanelysimpleblog ul.categories li {
+    float: left;
+}
+
+.insanelysimpleblog .sidebarcontainer {
+    float: right;
+    width: 160px;
+}
+
+.insanelysimpleblog .sidebarcontainer h1 {
+    padding-top: 0px;
+    margin-top: 0px;
+    font-size: 1em;
+}
+
+/* new clearfix */
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+	}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
