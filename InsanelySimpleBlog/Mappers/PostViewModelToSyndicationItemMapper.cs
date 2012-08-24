@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ServiceModel.Syndication;
+using CuttingEdge.Conditions;
 using InsanelySimpleBlog.System.Mappers;
 using InsanelySimpleBlog.ViewModel;
 
@@ -9,6 +10,9 @@ namespace InsanelySimpleBlog.Mappers
     {
         public SyndicationItem Map(PostViewModel @from, string baseUri)
         {
+            Condition.Requires(@from, "@from").IsNotNull();
+            Condition.Requires(baseUri, "baseUri").IsNotNullOrWhiteSpace();
+
             SyndicationItem item = new SyndicationItem
             {
                 BaseUri = new Uri(String.Format("{0}/#/posts/{1}", baseUri, @from.PostID)),

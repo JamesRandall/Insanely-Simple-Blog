@@ -5,6 +5,6 @@ namespace InsanelySimpleBlog.Syndication
 {
     internal interface ISyndication
     {
-        SyndicationFeed BuildFeed(object models, SettingsViewModel settings, string baseUrl);
+        SyndicationFeed BuildFeed(object models, string blogName, string baseUrl);
     }
 }

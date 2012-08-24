@@ -17,12 +17,12 @@ namespace InsanelySimpleBlog.Syndication.Implementation
             _mapper = mapper;
         }
 
-        public SyndicationFeed BuildFeed(object models, SettingsViewModel settings, string baseUrl)
+        public SyndicationFeed BuildFeed(object models, string blogName, string baseUrl)
         {
             SyndicationFeed feed = new SyndicationFeed
                                        {
-                                           Title = new TextSyndicationContent(settings.Name),
-                                           BaseUri = new Uri(settings.BlogPageUrl)
+                                           Title = new TextSyndicationContent(blogName),
+                                           BaseUri = new Uri(baseUrl)
                                        };
             List<SyndicationItem> feedItems = new List<SyndicationItem>();
 

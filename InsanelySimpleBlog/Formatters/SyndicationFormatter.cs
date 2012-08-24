@@ -56,9 +56,14 @@ namespace InsanelySimpleBlog.Formatters
         {
             SettingsViewModel settings = _settingsService.GetSettings();
             string baseUrl = settings.BlogPageUrl;
-            SyndicationFeed feed = _syndication.BuildFeed(models, settings, baseUrl);
+            SyndicationFeed feed = _syndication.BuildFeed(models, settings.Name, baseUrl);
 
-            using(XmlWriter writer = XmlWriter.Create(writeStream))
+            WriteFeed(writeStream, feed);
+        }
+
+        protected virtual void WriteFeed(Stream writeStream, SyndicationFeed feed)
+        {
+            using (XmlWriter writer = XmlWriter.Create(writeStream))
             {
                 SyndicationFeedFormatter formatter = GetFormatter(feed);
                 formatter.WriteTo(writer);
