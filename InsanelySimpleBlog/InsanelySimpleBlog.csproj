@@ -91,7 +91,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\InsanelySimpleBlogCategoryController.cs" />
     <Compile Include="Controllers\InsanelySimpleBlogPostController.cs" />
-    <Compile Include="Controllers\InsanelySimpleBlogStartupController.cs" />
+    <Compile Include="Controllers\InsanelySimpleBlogSidebarController.cs" />
     <Compile Include="DataModel\Author.cs" />
     <Compile Include="DataModel\Category.cs" />
     <Compile Include="DataModel\DateTimeIndex.cs" />
@@ -145,7 +145,7 @@
     <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\PostViewModel.cs" />
     <Compile Include="ConfigureHttpRoutes.cs" />
-    <Compile Include="ViewModel\StartupViewModel.cs" />
+    <Compile Include="ViewModel\SidebarViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

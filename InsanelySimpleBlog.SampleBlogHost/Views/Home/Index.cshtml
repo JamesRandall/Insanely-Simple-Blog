@@ -34,7 +34,7 @@
         </ul>
         <h1>OLDER POSTS</h1>
         <ul>
-            {{#each Indexes}}<li><a href="{{Url}}">{{indexLabel StartDate}}</a></li>{{/each}}
+            {{#each Indices}}<li><a href="{{indexUrl}}">{{indexLabel StartDate}} ({{NumberOfPosts}})</a></li>{{/each}}
         </ul>
     </script>
     <script type="text/javascript">
@@ -43,7 +43,7 @@
                 getPosts: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new {controller = "Post", action = "GetPosts"})',
                 getPost: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new {controller = "Post", action = "GetPost"})',
                 getCategories: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new {controller = "Category", action = "GetCategories"})',
-                getStartup: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new {controller = "Startup", action = "Get"})',
+                getSidebar: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new {controller = "Sidebar", action = "Get"})',
                 rss: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new {controller = "Post", action = "GetPosts"})?pageNumber=0&pageSize=20&formatter=rss',
                 atom: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new {controller = "Post", action = "GetPosts"})?pageNumber=0&pageSize=20&formatter=atom'
             };

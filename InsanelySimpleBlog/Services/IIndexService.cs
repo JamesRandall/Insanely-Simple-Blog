@@ -5,6 +5,6 @@ namespace InsanelySimpleBlog.Services
 {
     public interface IIndexService
     {
-        IEnumerable<DateTimeIndexViewModel> DisplayIndexes();
+        IEnumerable<DateTimeIndexViewModel> All();
     }
 }

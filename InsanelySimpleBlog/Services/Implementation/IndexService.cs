@@ -25,7 +25,7 @@ namespace InsanelySimpleBlog.Services.Implementation
             _mapper = mapper;
         }
 
-        public IEnumerable<DateTimeIndexViewModel> DisplayIndexes()
+        public IEnumerable<DateTimeIndexViewModel> All()
         {
             DateTimeIndex[] indices = null;
 

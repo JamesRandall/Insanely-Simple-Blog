@@ -1,14 +1,26 @@
 ﻿var InsanelySimpleBlog = { };
 
 InsanelySimpleBlog.start = function (apiEndpoints) {
+    Handlebars.registerHelper('indexLabel', function(date, block) {
+        return moment(date).format('MMMM YYYY');
+    });
 
     Handlebars.registerHelper('date', function (date, block) {
         return moment(date).format('LLL'); //Return a shortened version of the date
     });
 
+    Handlebars.registerHelper('indexUrl', function() {
+        var indexModel = this;
+        return "#/postsInDateRange/0/" + indexModel.StartDate + "/" + indexModel.EndDate;
+    });
+
     var pageIndex = 0;
     var pageSize = 10;
     var categoryId = null;
+    var fromStartDate = null;
+    var fromEndDate = null;
+    var isSideBarBuilt = false;
+
     var blogContainer = $(".insanelysimpleblog");
     var postContainer = $("<div class='postcontainer'>");
     var sidebarContainer = $("<div class='sidebarcontainer'>");
@@ -52,40 +64,25 @@ InsanelySimpleBlog.start = function (apiEndpoints) {
         }
     });
 
-    var categoryModel = Backbone.Model.extend({
-        idAttribute: "CategoryID"
-    });
-    var categoryCollection = Backbone.Collection.extend({
-        model: categoryModel
-    });
     var sidebarView = Backbone.View.extend({
         el: sidebarContainer,
         template: Handlebars.compile($("#tpl-sidebar-view").html()),
 
         initialize: function () {
-            this.model.bind("reset", this.render, this);
+            
         },
 
         render: function () {
             var element = $(this.el);
-            var menuModel = {
-                Rss: apiEndpoints.rss,
-                Atom: apiEndpoints.atom,
-                Categories: []
-            };
             element.empty();
-
-            _.each(this.model.models, function(row) {
-                menuModel.Categories.push(row.toJSON());
-            });
-
-            element.html(this.template(menuModel));
+            element.html(this.template(this.model));
         }
     });
 
     var appRouter = Backbone.Router.extend({
         routes: {
             "posts/:id": "getPost",
+            "postsInDateRange/:pageNumber/:startDate/:endDate": "getPostsInDateRange",
             "posts/": "getPosts",
             "categories/:id": "getPostsForCategory",
             "*actions": "defaultRoute" // matches http://example.com/#anything-here
@@ -101,6 +98,24 @@ InsanelySimpleBlog.start = function (apiEndpoints) {
                 var postsView = new postView({ model: postsCollection });
                 postsView.render();
             });
+            this.getSidebar();
+        },
+        getPostsInDateRange: function (page, startDate, endDate) {
+            pageIndex = page;
+            categoryId = null;
+            fromStartDate = startDate;
+            fromEndDate = endDate;
+            $.ajax({
+                url: apiEndpoints.getPosts,
+                data: { pageNumber: pageIndex, pageSize: pageSize, startDate: fromStartDate, endDate: fromEndDate },
+                type: 'GET',
+                contentType: 'application/json;charset=utf-8'
+            }).then(function (posts) {
+                var postsCollection = new postCollection(posts);
+                var postsView = new postView({ model: postsCollection });
+                postsView.render();
+            });
+            this.getSidebar();
         },
         getPostsForCategory: function (id) {
             pageIndex = 0;
@@ -115,6 +130,7 @@ InsanelySimpleBlog.start = function (apiEndpoints) {
                 var postsView = new postView({ model: postsCollection });
                 postsView.render();
             });
+            this.getSidebar();
         },
         getPosts: function () {
             $.ajax({
@@ -127,19 +143,30 @@ InsanelySimpleBlog.start = function (apiEndpoints) {
                 var postsView = new postView({ model: postsCollection });
                 postsView.render();
             });
+            this.getSidebar();
         },
-        defaultRoute: function(actions) {
-            this.getPosts();
+        getSidebar: function () {
+            if (!isSideBarBuilt) {
+                $.ajax({
+                    url: apiEndpoints.getSidebar,
+                    type: 'GET',
+                    contentType: 'application/json;charset=utf-8'
+                }).then(function (startup) {
+                    var sidebarModel = {
+                        Rss: apiEndpoints.rss,
+                        Atom: apiEndpoints.atom,
+                        Categories: startup.Categories,
+                        Indices: startup.Indices
+                    };
 
-            $.ajax({
-                url: apiEndpoints.getCategories,
-                type: 'GET',
-                contentType: 'application/json;charset=utf-8'
-            }).then(function(categories) {
-                var categoriesCollection = new categoryCollection(categories);
-                var view = new sidebarView({ model: categoriesCollection });
-                view.render();
-            });
+                    var view = new sidebarView({ model: sidebarModel });
+                    view.render();
+                    isSideBarBuilt = true;
+                });
+            }
+        },
+        defaultRoute: function (actions) {
+            this.getPosts();            
         }
     });
 
