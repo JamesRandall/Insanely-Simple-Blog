@@ -90,7 +90,6 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\InsanelySimpleBlogCategoryController.cs" />
-    <Compile Include="Controllers\InsanelySimpleBlogIndexController.cs" />
     <Compile Include="Controllers\InsanelySimpleBlogPostController.cs" />
     <Compile Include="Controllers\InsanelySimpleBlogStartupController.cs" />
     <Compile Include="DataModel\Author.cs" />
