@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\InsanelySimpleBlogCategoryControllerTests.cs" />
     <Compile Include="Controllers\InsanelySimpleBlogPostControllerTests.cs" />
     <Compile Include="Formatters\AtomSyndicationFormatterTests.cs" />
     <Compile Include="Formatters\RssSyndicationFormatterTests.cs" />

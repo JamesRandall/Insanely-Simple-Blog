@@ -41,7 +41,7 @@ namespace InsanelySimpleBlog.Tests.Unit.Formatters
             Assert.That(formatter.SupportedMediaTypes.Any(x => x.MediaType == "application/rss+xml"), Is.True);
             Assert.That(((QueryStringMapping)formatter.MediaTypeMappings[0]).QueryStringParameterName, Is.EqualTo("formatter"));
             Assert.That(((QueryStringMapping)formatter.MediaTypeMappings[0]).QueryStringParameterValue, Is.EqualTo("rss"));
-            Assert.That(((QueryStringMapping)formatter.MediaTypeMappings[0]).MediaType.MediaType, Is.EqualTo("html/text"));
+            Assert.That(formatter.MediaTypeMappings[0].MediaType.MediaType, Is.EqualTo("html/text"));
         }
     }
 }

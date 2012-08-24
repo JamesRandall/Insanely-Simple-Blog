@@ -38,6 +38,7 @@ namespace InsanelySimpleBlog
             container.RegisterType<ISyndication, Syndication.Implementation.Syndication>();
 
             // mappers
+            container.RegisterType<IMapper<DateTimeIndex, DateTimeIndexViewModel>, DateTimeIndexToDateTimeIndexViewModelMapper>();
             container.RegisterType<IMapper<Settings, SettingsViewModel>, SettingsToSettingsViewModelMapper>();
             container.RegisterType<IMapper<Author, AuthorViewModel>, AuthorToAuthorViewModelMapper>();
             container.RegisterType<IMapper<Category, CategoryViewModel>, CategoryToCategoryViewModelMapper>();
@@ -48,6 +49,7 @@ namespace InsanelySimpleBlog
             container.RegisterType<IPostsService, PostsService>();
             container.RegisterType<ICategoriesService, CategoriesService>();
             container.RegisterType<ISettingsService, SettingsService>();
+            container.RegisterType<IIndexService, IndexService>();
         }
     }
 }

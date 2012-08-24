@@ -90,9 +90,12 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\InsanelySimpleBlogCategoryController.cs" />
+    <Compile Include="Controllers\InsanelySimpleBlogIndexController.cs" />
     <Compile Include="Controllers\InsanelySimpleBlogPostController.cs" />
+    <Compile Include="Controllers\InsanelySimpleBlogStartupController.cs" />
     <Compile Include="DataModel\Author.cs" />
     <Compile Include="DataModel\Category.cs" />
+    <Compile Include="DataModel\DateTimeIndex.cs" />
     <Compile Include="DataModel\Post.cs" />
     <Compile Include="DataModel\Settings.cs" />
     <Compile Include="DataModel\SimpleBlogDbContext.cs" />
@@ -100,7 +103,9 @@
     <Compile Include="Formatters\AtomSyndicationFormatter.cs" />
     <Compile Include="Formatters\RssSyndicationFormatter.cs" />
     <Compile Include="Formatters\SyndicationFormatter.cs" />
+    <Compile Include="Mappers\DateTimeIndexToDateTimeIndexViewModelMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IIndexService.cs" />
     <Compile Include="Services\Implementation\CategoriesService.cs" />
     <Compile Include="Mappers\AuthorToAuthorViewModelMapper.cs" />
     <Compile Include="Mappers\CategoryToCategoryViewModelMapper.cs" />
@@ -109,6 +114,7 @@
     <Compile Include="Mappers\SettingsToSettingsViewModelMapper.cs" />
     <Compile Include="Markdown\IMarkdownConverter.cs" />
     <Compile Include="Markdown\Implementation\MarkdownConverter.cs" />
+    <Compile Include="Services\Implementation\IndexService.cs" />
     <Compile Include="Services\Implementation\PostsService.cs" />
     <Compile Include="Services\ICategoriesService.cs" />
     <Compile Include="Services\Implementation\SettingsService.cs" />
@@ -135,10 +141,12 @@
     <Compile Include="System\Threading\Implementation\ManualResetEventWaitHandle.cs" />
     <Compile Include="System\Threading\IWaitHandle.cs" />
     <Compile Include="ViewModel\AuthorViewModel.cs" />
+    <Compile Include="ViewModel\DateTimeIndexViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\PostViewModel.cs" />
     <Compile Include="ConfigureHttpRoutes.cs" />
+    <Compile Include="ViewModel\StartupViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

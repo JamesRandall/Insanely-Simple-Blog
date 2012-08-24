@@ -59,8 +59,27 @@ namespace InsanelySimpleBlog.PowerShell
                                        PostedAt = DateTime.UtcNow
                                    };
                 context.Posts.Add(newPost);
+                UpdateIndicies(context, newPost.PostedAt);
                 context.SaveChanges();
             }
+        }
+
+        private void UpdateIndicies(SimpleBlogDbContext context, DateTime postDate)
+        {
+            DateTimeIndex index = context.DateTimeIndices.FirstOrDefault(x => x.StartDate <= postDate && x.EndDate >= postDate);
+            if (index == null)
+            {
+                DateTime startDate = new DateTime(postDate.Year, postDate.Month, 1);
+                DateTime endDate = startDate.AddMonths(1).Subtract(TimeSpan.FromSeconds(1));
+                index = new DateTimeIndex
+                            {
+                                EndDate = endDate,
+                                StartDate = startDate,
+                                NumberOfPosts = 0
+                            };
+                context.DateTimeIndices.Add(index);
+            }
+            index.NumberOfPosts++;
         }
 
         private string GetResolvedPath()

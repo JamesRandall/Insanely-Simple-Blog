@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
 using CuttingEdge.Conditions;
 using InsanelySimpleBlog.Services;
@@ -27,7 +28,7 @@ namespace InsanelySimpleBlog.Controllers
             return _postsService.Get(id);
         }
 
-        public IEnumerable<PostViewModel> GetPosts(int pageNumber, int pageSize, int? categoryId=null)
+        public IEnumerable<PostViewModel> GetPosts(int pageNumber, int pageSize, int? categoryId=null, DateTime? startDate= null, DateTime? endDate=null)
         {
             return _postsService.RecentPosts(pageNumber, pageSize, categoryId);
         }

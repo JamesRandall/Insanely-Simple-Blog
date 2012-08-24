@@ -9,6 +9,7 @@ namespace InsanelySimpleBlog.DataModel
         public DbSet<Category> Categories { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Settings> Settings { get; set; }
+        public DbSet<DateTimeIndex> DateTimeIndices { get; set; }
 
         public SimpleBlogDbContext() : base()
         {

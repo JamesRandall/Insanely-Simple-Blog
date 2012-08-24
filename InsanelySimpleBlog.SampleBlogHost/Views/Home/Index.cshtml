@@ -22,15 +22,19 @@
         </div>
     </script>
     <script type="text/tamplate" id="tpl-sidebar-view">
+        <h1>SUBSCRIBE</h1>
+        <ul>
+            <li><a href="{{Rss}}">Rss</a></li>
+            <li><a href="{{Atom}}">Atom</a></li>
+        </ul>
         <h1>CATEGORIES</h1>
         <ul>
             <li><a href="#/posts">All</a></li>
             {{#each Categories}}<li><a href="#/categories/{{CategoryID}}">{{Name}}</a></li>{{/each}}
         </ul>
-        <h1>SUBSCRIBE</h1>
+        <h1>OLDER POSTS</h1>
         <ul>
-            <li><a href="{{Rss}}">Rss</a></li>
-            <li><a href="{{Atom}}">Atom</a></li>
+            {{#each Indexes}}<li><a href="{{Url}}">{{indexLabel StartDate}}</a></li>{{/each}}
         </ul>
     </script>
     <script type="text/javascript">
@@ -39,8 +43,9 @@
                 getPosts: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new {controller = "Post", action = "GetPosts"})',
                 getPost: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new {controller = "Post", action = "GetPost"})',
                 getCategories: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new {controller = "Category", action = "GetCategories"})',
-                rss: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new { controller = "Post", action="GetPosts" })?pageNumber=0&pageSize=20&formatter=rss',
-                atom: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new { controller = "Post", action="GetPosts" })?pageNumber=0&pageSize=20&formatter=atom'
+                getStartup: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new {controller = "Startup", action = "Get"})',
+                rss: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new {controller = "Post", action = "GetPosts"})?pageNumber=0&pageSize=20&formatter=rss',
+                atom: '@Url.HttpRouteUrl("InsanelySimpleBlogApi", new {controller = "Post", action = "GetPosts"})?pageNumber=0&pageSize=20&formatter=atom'
             };
             InsanelySimpleBlog.start(apiEndpoints);
         });
