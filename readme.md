@@ -87,11 +87,11 @@ If you change the code and want to build yourself a NuGet package you can use th
 
 You can send feedback to me at
 
-    [support@accidentalfish.com](support@accidentalfish.com)
+> [support@accidentalfish.com](support@accidentalfish.com)
 
 Or via my blog at
 
-    http://accidentalfish.wordpress.com
+> [http://accidentalfish.wordpress.com](http://accidentalfish.wordpress.com)
 
 If I can help I will!
 
