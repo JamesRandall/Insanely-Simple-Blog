@@ -11,8 +11,6 @@ namespace InsanelySimpleBlog.SampleBlogHost
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
-            ConfigureHttpRoutes.RegisterRoutes(config);
         }
     }
 }

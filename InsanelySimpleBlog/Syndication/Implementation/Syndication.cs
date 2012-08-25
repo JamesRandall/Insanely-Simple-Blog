@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ServiceModel.Syndication;
 using CuttingEdge.Conditions;
+using InsanelySimpleBlog.Mappers;
 using InsanelySimpleBlog.System.Mappers;
 using InsanelySimpleBlog.ViewModel;
 
@@ -10,6 +11,11 @@ namespace InsanelySimpleBlog.Syndication.Implementation
     class Syndication : ISyndication
     {
         private readonly IMapperWithContext<PostViewModel, SyndicationItem, string> _mapper;
+
+        public Syndication() : this(new PostViewModelToSyndicationItemMapper())
+        {
+            
+        }
 
         public Syndication(IMapperWithContext<PostViewModel, SyndicationItem, string> mapper)
         {

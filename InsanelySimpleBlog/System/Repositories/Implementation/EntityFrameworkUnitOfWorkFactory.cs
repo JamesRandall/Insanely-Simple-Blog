@@ -1,4 +1,5 @@
 ﻿using System;
+using InsanelySimpleBlog.DataModel;
 using InsanelySimpleBlog.System.Configuration;
 using InsanelySimpleBlog.System.Policies.Implementation;
 
@@ -8,6 +9,11 @@ namespace InsanelySimpleBlog.System.Repositories.Implementation
     {
         private readonly IConfiguration _configuration;
         private readonly IDbContextFactory _contextFactory;
+
+        public EntityFrameworkUnitOfWorkFactory() : this(new Configuration.Implementation.Configuration(), new SimpleBlogContextFactory())
+        {
+            
+        }
 
         public EntityFrameworkUnitOfWorkFactory(IConfiguration configuration, IDbContextFactory contextFactory)
         {

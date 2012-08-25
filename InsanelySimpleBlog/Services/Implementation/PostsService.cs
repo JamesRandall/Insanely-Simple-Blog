@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using CuttingEdge.Conditions;
 using InsanelySimpleBlog.DataModel;
+using InsanelySimpleBlog.Mappers;
 using InsanelySimpleBlog.System.Mappers;
 using InsanelySimpleBlog.System.Repositories;
+using InsanelySimpleBlog.System.Repositories.Implementation;
 using InsanelySimpleBlog.ViewModel;
 
 namespace InsanelySimpleBlog.Services.Implementation
@@ -13,6 +15,11 @@ namespace InsanelySimpleBlog.Services.Implementation
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IMapper<Post, PostViewModel> _postMapper;
+
+        public PostsService() : this(new EntityFrameworkUnitOfWorkFactory(), new PostToPostViewModelMapper())
+        {
+            
+        }
 
         public PostsService(
             IUnitOfWorkFactory unitOfWorkFactory,

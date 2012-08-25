@@ -2,6 +2,7 @@
 using System.Web.Http;
 using CuttingEdge.Conditions;
 using InsanelySimpleBlog.Services;
+using InsanelySimpleBlog.Services.Implementation;
 using InsanelySimpleBlog.ViewModel;
 
 namespace InsanelySimpleBlog.Controllers
@@ -13,6 +14,11 @@ namespace InsanelySimpleBlog.Controllers
     public class InsanelySimpleBlogCategoryController : ApiController
     {
         private readonly ICategoriesService _categoriesService;
+
+        public InsanelySimpleBlogCategoryController() : this(new CategoriesService())
+        {
+            
+        }
 
         public InsanelySimpleBlogCategoryController(
             ICategoriesService categoriesService)

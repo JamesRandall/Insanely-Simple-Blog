@@ -2,6 +2,7 @@
 using CuttingEdge.Conditions;
 using InsanelySimpleBlog.DataModel;
 using InsanelySimpleBlog.Markdown;
+using InsanelySimpleBlog.Markdown.Implementation;
 using InsanelySimpleBlog.System.Mappers;
 using InsanelySimpleBlog.ViewModel;
 
@@ -11,6 +12,11 @@ namespace InsanelySimpleBlog.Mappers
     {
         private readonly IMapper<Category, CategoryViewModel> _categoryMapper;
         private readonly IMarkdownConverter _markdownConverter;
+
+        public PostToPostViewModelMapper() : this(new CategoryToCategoryViewModelMapper(), new MarkdownConverter())
+        {
+            
+        }
 
         public PostToPostViewModelMapper(
             IMapper<Category, CategoryViewModel> categoryMapper,

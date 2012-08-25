@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -27,47 +27,59 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CuttingEdge.Conditions">
+    <Reference Include="CuttingEdge.Conditions, Version=1.2.0.11174, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\CuttingEdge.Conditions.1.2.0.0\lib\NET35\CuttingEdge.Conditions.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="MarkdownSharp">
+    <Reference Include="MarkdownSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling">
-      <HintPath>..\packages\EnterpriseLibrary.WindowsAzure.TransientFaultHandling.5.0.1118.2\lib\NET4\Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.dll</HintPath>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling, Version=5.0.1118.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EnterpriseLibrary.WindowsAzure.TransientFaultHandling.5.0.1208.1\lib\NET4\Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation">
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.TransientFaultHandling.Core">
+    <Reference Include="Microsoft.Practices.TransientFaultHandling.Core, Version=5.0.1118.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\TransientFaultHandling.Core.5.0.1118.2\lib\NET35\Microsoft.Practices.TransientFaultHandling.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Configuration">
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Interception">
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration">
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -81,14 +93,21 @@
     <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.5.1\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="UnityBootstrapper.cs" />
+    <None Include="Content\BlogController.cs.pp" />
     <Compile Include="Controllers\InsanelySimpleBlogCategoryController.cs" />
     <Compile Include="Controllers\InsanelySimpleBlogPostController.cs" />
     <Compile Include="Controllers\InsanelySimpleBlogSidebarController.cs" />
@@ -143,11 +162,14 @@
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\PostViewModel.cs" />
-    <Compile Include="ConfigureHttpRoutes.cs" />
+    <Compile Include="Configure.cs" />
     <Compile Include="ViewModel\SidebarViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="Content\Index.cshtml" />
+    <None Include="Content\Init.ps1" />
+    <None Include="Content\web.config.transform" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

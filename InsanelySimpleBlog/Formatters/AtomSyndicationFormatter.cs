@@ -3,6 +3,7 @@ using System.Net.Http.Headers;
 using System.ServiceModel.Syndication;
 using System.Web.Http;
 using InsanelySimpleBlog.Services;
+using InsanelySimpleBlog.Services.Implementation;
 using InsanelySimpleBlog.Syndication;
 
 namespace InsanelySimpleBlog.Formatters
@@ -11,9 +12,7 @@ namespace InsanelySimpleBlog.Formatters
     {
         private const string Atom = "application/atom+xml";
 
-        public AtomSyndicationFormatter() : this("text/html",
-                (ISettingsService)GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(ISettingsService)),
-                (ISyndication)GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(ISyndication)))
+        public AtomSyndicationFormatter() : this("text/html", new SettingsService(), new Syndication.Implementation.Syndication())
         {
             
         }

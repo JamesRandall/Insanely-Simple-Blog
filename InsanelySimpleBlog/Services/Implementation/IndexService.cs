@@ -2,8 +2,10 @@
 using System.Linq;
 using CuttingEdge.Conditions;
 using InsanelySimpleBlog.DataModel;
+using InsanelySimpleBlog.Mappers;
 using InsanelySimpleBlog.System.Mappers;
 using InsanelySimpleBlog.System.Repositories;
+using InsanelySimpleBlog.System.Repositories.Implementation;
 using InsanelySimpleBlog.ViewModel;
 
 namespace InsanelySimpleBlog.Services.Implementation
@@ -13,6 +15,11 @@ namespace InsanelySimpleBlog.Services.Implementation
         private const int MaximumDisplayIndexes = 10;
         private readonly IMapper<DateTimeIndex, DateTimeIndexViewModel> _mapper;
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
+
+        public IndexService() : this(new EntityFrameworkUnitOfWorkFactory(), new DateTimeIndexToDateTimeIndexViewModelMapper())
+        {
+            
+        }
 
         public IndexService(
             IUnitOfWorkFactory unitOfWorkFactory,

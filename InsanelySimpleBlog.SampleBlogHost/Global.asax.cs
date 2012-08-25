@@ -17,7 +17,7 @@ namespace InsanelySimpleBlog.SampleBlogHost
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            Bootstrapper.Initialise();
+            //UnityBootstrapper.Initialise();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

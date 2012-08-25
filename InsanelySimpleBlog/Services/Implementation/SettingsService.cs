@@ -1,8 +1,10 @@
 ﻿using System.Linq;
 using CuttingEdge.Conditions;
 using InsanelySimpleBlog.DataModel;
+using InsanelySimpleBlog.Mappers;
 using InsanelySimpleBlog.System.Mappers;
 using InsanelySimpleBlog.System.Repositories;
+using InsanelySimpleBlog.System.Repositories.Implementation;
 using InsanelySimpleBlog.ViewModel;
 
 namespace InsanelySimpleBlog.Services.Implementation
@@ -11,6 +13,11 @@ namespace InsanelySimpleBlog.Services.Implementation
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IMapper<Settings, SettingsViewModel> _mapper;
+
+        public SettingsService() : this(new EntityFrameworkUnitOfWorkFactory(), new SettingsToSettingsViewModelMapper())
+        {
+            
+        }
 
         public SettingsService(IUnitOfWorkFactory unitOfWorkFactory,
             IMapper<Settings, SettingsViewModel> mapper)

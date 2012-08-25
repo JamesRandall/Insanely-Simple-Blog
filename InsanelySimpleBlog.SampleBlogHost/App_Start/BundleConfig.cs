@@ -38,18 +38,6 @@ namespace InsanelySimpleBlog.SampleBlogHost
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
-
-            
-            bundles.Add(new ScriptBundle("~/bundles/insanelySimpleBlog").Include(
-                "~/Scripts/moment.js",
-                "~/Scripts/underscore.js",
-                "~/Scripts/backbone.js",
-                "~/Scripts/handlebars.js",
-                "~/Scripts/insanelySimpleBlog.js"
-                ));
-
-            bundles.Add(new StyleBundle("~/Content/insanelySimpleBlogCss").Include(
-                "~/Content/insanelySimpleBlog.css"));
         }
     }
 }

@@ -20,7 +20,7 @@ using Microsoft.Practices.Unity;
 
 namespace InsanelySimpleBlog
 {
-    public static class Bootstrapper
+    public static class UnityBootstrapper
     {
         public static void RegisterDependencies(IUnityContainer container)
         {

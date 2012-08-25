@@ -2,8 +2,10 @@
 using System.Linq;
 using CuttingEdge.Conditions;
 using InsanelySimpleBlog.DataModel;
+using InsanelySimpleBlog.Mappers;
 using InsanelySimpleBlog.System.Mappers;
 using InsanelySimpleBlog.System.Repositories;
+using InsanelySimpleBlog.System.Repositories.Implementation;
 using InsanelySimpleBlog.ViewModel;
 
 namespace InsanelySimpleBlog.Services.Implementation
@@ -12,6 +14,11 @@ namespace InsanelySimpleBlog.Services.Implementation
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IMapper<Category, CategoryViewModel> _categoryMapper;
+
+        public CategoriesService() : this(new EntityFrameworkUnitOfWorkFactory(), new CategoryToCategoryViewModelMapper())
+        {
+            
+        }
 
         public CategoriesService(
             IUnitOfWorkFactory unitOfWorkFactory,

@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using CuttingEdge.Conditions;
 using InsanelySimpleBlog.Services;
+using InsanelySimpleBlog.Services.Implementation;
 using InsanelySimpleBlog.ViewModel;
 
 namespace InsanelySimpleBlog.Controllers
@@ -9,6 +10,11 @@ namespace InsanelySimpleBlog.Controllers
     {
         private readonly ICategoriesService _categoriesService;
         private readonly IIndexService _indexService;
+
+        public InsanelySimpleBlogSidebarController() : this(new CategoriesService(), new IndexService())
+        {
+            
+        }
 
         public InsanelySimpleBlogSidebarController(
             ICategoriesService categoriesService,

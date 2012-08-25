@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using CuttingEdge.Conditions;
 using InsanelySimpleBlog.Services;
+using InsanelySimpleBlog.Services.Implementation;
 using InsanelySimpleBlog.ViewModel;
 
 namespace InsanelySimpleBlog.Controllers
@@ -14,6 +15,11 @@ namespace InsanelySimpleBlog.Controllers
     public class InsanelySimpleBlogPostController : ApiController
     {
         private readonly IPostsService _postsService;
+
+        public InsanelySimpleBlogPostController() : this(new PostsService())
+        {
+            
+        }
         
         public InsanelySimpleBlogPostController(
             IPostsService postsService)
