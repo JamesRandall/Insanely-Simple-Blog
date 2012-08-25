@@ -166,6 +166,7 @@
     <Compile Include="ViewModel\SidebarViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\InsanelySimpleBlog-readme.txt" />
     <None Include="App.config" />
     <Content Include="Content\Index.cshtml" />
     <None Include="Content\Init.ps1" />

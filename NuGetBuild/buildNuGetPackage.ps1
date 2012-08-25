@@ -26,5 +26,6 @@ Copy-Item ..\InsanelySimpleBlog\Content\insanelySimpleBlog.js .\content\Scripts
 Copy-Item ..\InsanelySimpleBlog\Content\BlogController.cs.pp .\content\Controllers
 Copy-Item ..\InsanelySimpleBlog\Content\Index.cshtml .\content\Views\Blog
 Copy-Item ..\InsanelySimpleBlog\Content\web.config.transform .\content\
+Copy-Item ..\InsanelySimpleBlog\Content\InsanelySimpleBlog-readme.txt .\content\
 
 nuget pack .\InsanelySimpleBlog.nuspec
