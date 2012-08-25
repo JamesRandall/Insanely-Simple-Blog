@@ -48,6 +48,7 @@ namespace InsanelySimpleBlog.Services.Implementation
             Condition.Requires(pageNumber, "pageNumber").IsGreaterOrEqual(0);
             Condition.Requires(pageSize, "pageSize").IsLessOrEqual(ServiceConstants.MaximumPageSize+1);
             Condition.Requires(pageSize, "pageSize").IsGreaterThan(0);
+
             Post[] posts = null;
 
             using(IUnitOfWork unitOfWork = _unitOfWorkFactory.Create())

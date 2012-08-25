@@ -38,7 +38,7 @@ namespace InsanelySimpleBlog.Tests.Unit.Controllers
         {
             // Arrange
             List<PostViewModel> serviceModel = new List<PostViewModel> { new PostViewModel { PostID = 1 }};
-            _service.Stub(x => x.RecentPosts(1, 2, null)).Return(serviceModel);
+            _service.Stub(x => x.RecentPosts(1, 2, null, null, null)).Return(serviceModel);
             InsanelySimpleBlogPostController controller = new InsanelySimpleBlogPostController(_service);
 
             // Act
