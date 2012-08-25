@@ -19,6 +19,9 @@ namespace InsanelySimpleBlog.PowerShell
         [Parameter(Mandatory = false, HelpMessage = "A comma delimited list of the category names to assign the post to")]
         public string Categories { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The date and time to mark the post as posted at. If not specified defaults to now. Use format yyyy-MM-ddThh:mm:ss for example: 2012-07-21T14:20:34")]
+        public DateTime? PostedAt { get; set; }
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
@@ -37,7 +40,6 @@ namespace InsanelySimpleBlog.PowerShell
                 bodyBuilder.AppendLine(markdownFile[lineNumber]);
             }
             
-
             string[] categoryNames = null;
             if (!String.IsNullOrWhiteSpace(Categories))
             {
@@ -56,7 +58,7 @@ namespace InsanelySimpleBlog.PowerShell
                                        Categories = categories,
                                        ExternalIdentifier = Guid.NewGuid(),
                                        Subject = subject,
-                                       PostedAt = DateTime.UtcNow
+                                       PostedAt = PostedAt.HasValue ? PostedAt.Value : DateTime.UtcNow
                                    };
                 context.Posts.Add(newPost);
                 UpdateIndicies(context, newPost.PostedAt);

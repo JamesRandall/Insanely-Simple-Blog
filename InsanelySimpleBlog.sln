@@ -14,7 +14,18 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample Posts", "Sample Posts", "{50DE0620-0685-4252-8771-E837B970119B}"
 	ProjectSection(SolutionItems) = preProject
 		SamplePosts\post1.md = SamplePosts\post1.md
+		SamplePosts\post10.md = SamplePosts\post10.md
+		SamplePosts\post11.md = SamplePosts\post11.md
+		SamplePosts\post12.md = SamplePosts\post12.md
 		SamplePosts\post2.md = SamplePosts\post2.md
+		SamplePosts\post3.md = SamplePosts\post3.md
+		SamplePosts\post4.md = SamplePosts\post4.md
+		SamplePosts\post5.md = SamplePosts\post5.md
+		SamplePosts\post6.md = SamplePosts\post6.md
+		SamplePosts\post7.md = SamplePosts\post7.md
+		SamplePosts\post8.md = SamplePosts\post8.md
+		SamplePosts\post9.md = SamplePosts\post9.md
+		SamplePosts\sample-setup.ps1 = SamplePosts\sample-setup.ps1
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsanelySimpleBlog.SampleBlogHost", "InsanelySimpleBlog.SampleBlogHost\InsanelySimpleBlog.SampleBlogHost.csproj", "{0FFD05BD-DEB6-4468-B3D9-5B347B47707B}"

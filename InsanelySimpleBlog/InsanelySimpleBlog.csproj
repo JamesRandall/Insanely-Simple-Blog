@@ -98,7 +98,6 @@
     <Compile Include="DataModel\Post.cs" />
     <Compile Include="DataModel\Settings.cs" />
     <Compile Include="DataModel\SimpleBlogDbContext.cs" />
-    <Compile Include="DataModel\SimpleBlogInitializer.cs" />
     <Compile Include="Formatters\AtomSyndicationFormatter.cs" />
     <Compile Include="Formatters\RssSyndicationFormatter.cs" />
     <Compile Include="Formatters\SyndicationFormatter.cs" />
