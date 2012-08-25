@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CuttingEdge.Conditions;
 using InsanelySimpleBlog.DataModel;
@@ -42,10 +43,10 @@ namespace InsanelySimpleBlog.Services.Implementation
             return _postMapper.Map(post);
         }
 
-        public IEnumerable<PostViewModel> RecentPosts(int pageNumber, int pageSize, int? categoryId)
+        public IEnumerable<PostViewModel> RecentPosts(int pageNumber, int pageSize, int? categoryId, DateTime? startDate, DateTime? endDate)
         {
             Condition.Requires(pageNumber, "pageNumber").IsGreaterOrEqual(0);
-            Condition.Requires(pageSize, "pageSize").IsLessOrEqual(ServiceConstants.MaximumPageSize);
+            Condition.Requires(pageSize, "pageSize").IsLessOrEqual(ServiceConstants.MaximumPageSize+1);
             Condition.Requires(pageSize, "pageSize").IsGreaterThan(0);
             Post[] posts = null;
 
@@ -60,10 +61,18 @@ namespace InsanelySimpleBlog.Services.Implementation
                                                     {
                                                         query = query.Where(x => x.Categories.Any(c => c.CategoryID == categoryId.Value));
                                                     }
+                                                    if (startDate.HasValue)
+                                                    {
+                                                        query = query.Where(x => x.PostedAt >= startDate.Value);
+                                                    }
+                                                    if (endDate.HasValue)
+                                                    {
+                                                        query = query.Where(x => x.PostedAt <= endDate.Value);
+                                                    }
                                                     posts = query
                                                         .OrderByDescending(x => x.PostedAt)
                                                         .Skip(pageNumber*pageSize)
-                                                        .Take(pageSize)
+                                                        .Take(pageSize+1)
                                                         .ToArray();
                                                 });
             }

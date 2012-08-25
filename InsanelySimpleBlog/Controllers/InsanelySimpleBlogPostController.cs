@@ -30,7 +30,7 @@ namespace InsanelySimpleBlog.Controllers
 
         public IEnumerable<PostViewModel> GetPosts(int pageNumber, int pageSize, int? categoryId=null, DateTime? startDate= null, DateTime? endDate=null)
         {
-            return _postsService.RecentPosts(pageNumber, pageSize, categoryId);
+            return _postsService.RecentPosts(pageNumber, pageSize, categoryId, startDate, endDate);
         }
     }
 }

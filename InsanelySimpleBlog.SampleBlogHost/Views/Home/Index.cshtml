@@ -7,17 +7,23 @@
 
 @section scripts {
     @Scripts.Render("~/bundles/insanelySimpleBlog")
+    <script type="text/template" id="tpl-older-link-view">
+        <a class="olderposts" href="{{url}}">Older posts</a>
+    </script>
+    <script type="text/template" id="tpl-newer-link-view">
+        <a class="newerposts" href="{{url}}">Newer posts</a>
+    </script>
     <script type="text/template" id="tpl-post-item-view">
         <div class="post">
             <div class="header">
-                <a href="#/posts/{{PostID}}">{{Subject}}</a>
+                <a href="#/post/{{PostID}}">{{Subject}}</a>
                 Posted on {{date PostedAt}} by {{AuthorName}}
             </div>
             <div class="body">
                 {{{BodyAsHtml}}}
             </div>
             <ul class="categories clearfix">
-                {{#each Categories}}<li><a href="#/categories/{{CategoryID}}">{{Name}}</a></li>{{/each}}
+                {{#each Categories}}<li><a href="{{categoryUrl}}">{{Name}}</a></li>{{/each}}
             </ul>
         </div>
     </script>
@@ -30,7 +36,7 @@
         <h1>CATEGORIES</h1>
         <ul>
             <li><a href="#/posts">All</a></li>
-            {{#each Categories}}<li><a href="#/categories/{{CategoryID}}">{{Name}}</a></li>{{/each}}
+            {{#each Categories}}<li><a href="{{categoryUrl}}">{{Name}}</a></li>{{/each}}
         </ul>
         <h1>OLDER POSTS</h1>
         <ul>

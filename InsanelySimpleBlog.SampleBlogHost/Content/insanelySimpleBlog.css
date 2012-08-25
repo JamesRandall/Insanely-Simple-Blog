@@ -7,6 +7,14 @@
     padding-right: 20px;
 }
 
+.insanelysimpleblog .postcontainer .olderposts {
+    float: left;
+}
+
+.insanelysimpleblog .postcontainer .newerposts {
+    float: right;
+}
+
 .insanelysimpleblog .post {
     margin-bottom: 5em;
 }

@@ -1,6 +1,14 @@
 ﻿var InsanelySimpleBlog = { };
 
 InsanelySimpleBlog.start = function (apiEndpoints) {
+    function buildDateRangeUrl(pageNumber, startDate, endDate) {
+        return "#/postsInDateRange/" + pageNumber + "/" + startDate + "/" + endDate;
+    }
+    
+    function buildCategoryUrl(pageNumber, categoryId) {
+        return "#/categories/" + pageNumber + "/" + categoryId;
+    }
+
     Handlebars.registerHelper('indexLabel', function(date, block) {
         return moment(date).format('MMMM YYYY');
     });
@@ -11,7 +19,12 @@ InsanelySimpleBlog.start = function (apiEndpoints) {
 
     Handlebars.registerHelper('indexUrl', function() {
         var indexModel = this;
-        return "#/postsInDateRange/0/" + indexModel.StartDate + "/" + indexModel.EndDate;
+        return buildDateRangeUrl(0, indexModel.StartDate, indexModel.EndDate);
+    });
+
+    Handlebars.registerHelper('categoryUrl', function() {
+        var categoryModel = this;
+        return buildCategoryUrl(0, categoryModel.CategoryID);
     });
 
     var pageIndex = 0;
@@ -22,7 +35,7 @@ InsanelySimpleBlog.start = function (apiEndpoints) {
     var isSideBarBuilt = false;
 
     var blogContainer = $(".insanelysimpleblog");
-    var postContainer = $("<div class='postcontainer'>");
+    var postContainer = $("<div class='postcontainer clearfix'>");
     var sidebarContainer = $("<div class='sidebarcontainer'>");
     blogContainer.append(sidebarContainer);
     blogContainer.append(postContainer);
@@ -35,7 +48,9 @@ InsanelySimpleBlog.start = function (apiEndpoints) {
     });
     var postView = Backbone.View.extend({
         el: postContainer,
-
+        olderLinkTemplate: Handlebars.compile($("#tpl-older-link-view").html()),
+        newerLinkTemplate: Handlebars.compile($("#tpl-newer-link-view").html()),
+        
         initialize: function() {
             this.model.bind("reset", this.render, this);
         },
@@ -43,9 +58,44 @@ InsanelySimpleBlog.start = function (apiEndpoints) {
         render: function() {
             var element = $(this.el);
             element.empty();
-            _.each(this.model.models, function(row) {
+            _.each(this.model.models.slice(0,pageSize), function(row) {
                 element.append(new postItemView({ model: row }).render().el);
             });
+            
+            if (this.model.models.length > pageSize) {
+                var olderUrl;
+                if (categoryId !== null) {
+                    olderUrl = buildCategoryUrl(pageIndex + 1, categoryId);
+                }
+                else if (fromStartDate !== null) {
+                    olderUrl = buildDateRangeUrl(pageIndex + 1, fromStartDate, fromEndDate);
+                }
+                else {
+                    olderUrl = "#/posts/" + (pageIndex + 1);
+                }
+                element.append(this.olderLinkTemplate({ url: olderUrl}));
+            }
+                
+            if (pageIndex > 0) {
+                var newerUrl;
+                if (categoryId !== null) {
+                    newerUrl = buildCategoryUrl(pageIndex - 1, categoryId);
+                }
+                else if (fromStartDate !== null) {
+                    newerUrl = buildDateRangeUrl(pageIndex - 1, fromStartDate, fromEndDate);
+                }
+                else {
+                    newerUrl = "#/posts/" + (pageIndex - 1);
+                }
+                element.append(this.newerLinkTemplate({ url: newerUrl }));
+            }
+
+            var offset = element.offset().top;
+            if (offset < $(window).height()) {
+                offset = 0;
+            }
+            $(document).scrollTop(offset);
+            
         }
     });
     var postItemView = Backbone.View.extend({
@@ -81,10 +131,11 @@ InsanelySimpleBlog.start = function (apiEndpoints) {
 
     var appRouter = Backbone.Router.extend({
         routes: {
-            "posts/:id": "getPost",
+            "post/:id": "getPost",
+            "posts/:pageNumber" : "getPosts",
             "postsInDateRange/:pageNumber/:startDate/:endDate": "getPostsInDateRange",
             "posts/": "getPosts",
-            "categories/:id": "getPostsForCategory",
+            "categories/:pageNumber/:id": "getPostsForCategory",
             "*actions": "defaultRoute" // matches http://example.com/#anything-here
         },
         getPost: function(id) {
@@ -101,7 +152,7 @@ InsanelySimpleBlog.start = function (apiEndpoints) {
             this.getSidebar();
         },
         getPostsInDateRange: function (page, startDate, endDate) {
-            pageIndex = page;
+            pageIndex = 1 * page;
             categoryId = null;
             fromStartDate = startDate;
             fromEndDate = endDate;
@@ -117,8 +168,10 @@ InsanelySimpleBlog.start = function (apiEndpoints) {
             });
             this.getSidebar();
         },
-        getPostsForCategory: function (id) {
-            pageIndex = 0;
+        getPostsForCategory: function (pageNumber, id) {
+            fromStartDate = null;
+            fromEndDate = null;
+            pageIndex = 1 * pageNumber;
             categoryId = id;
             $.ajax({
                 url: apiEndpoints.getPosts,
@@ -132,7 +185,12 @@ InsanelySimpleBlog.start = function (apiEndpoints) {
             });
             this.getSidebar();
         },
-        getPosts: function () {
+        getPosts: function (pageNumber) {
+            if (pageNumber !== undefined) {
+                pageIndex = 1 * pageNumber;
+            } else {
+                pageIndex = 0;
+            }
             $.ajax({
                 url: apiEndpoints.getPosts,
                 data: { pageNumber: pageIndex, pageSize: pageSize },
@@ -169,7 +227,6 @@ InsanelySimpleBlog.start = function (apiEndpoints) {
             this.getPosts();            
         }
     });
-
     
     var appRouterInstance = new appRouter();
     Backbone.history.start();
