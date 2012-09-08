@@ -18,7 +18,7 @@ Why write another blog system? I didn't really mean to. I just set out to tinker
 
 The easiest way to install the blog is through NuGet. Either find the InsanelySimpleBlog package in the GUI or in the console type:
 
-    Install-Package InsanelySimplyBlog
+    Install-Package InsanelySimpleBlog
 
 The blog will slot nicely into a default MVC4 project structure but if you tinker with things obviously you may need to do work to fit it in.
 
